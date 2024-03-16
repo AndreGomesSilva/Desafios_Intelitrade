@@ -20,7 +20,7 @@
 
 enum				e_action
 {
-	INSERT,
+	INSERT = 0,
 	MODIFIER,
 	DELETE,
 };
@@ -39,17 +39,21 @@ typedef struct s_book
 	double			value;
 	int				quantity;
 	struct s_book	*next;
+	struct s_book	*previous;
 }					t_book;
 
 // book
-int					position_exists(t_book *book, int position);
-t_book				*new_node_book(t_book *book);
-int					init_book(t_book *book);
-int					new_book(t_book *book);
+void				reduce_position(t_book *node);
+t_book				*remove_node_book(t_book *node);
+t_book				*get_node_position(t_book *book, int position);
+t_book				*add_node_book(t_book *book);
+int					init_book(t_book **book);
 
 // actions
+t_book				*delete_property(t_book *node);
+t_book				*modify_property(t_book *node, t_property *property);
 t_book				*insert_property(t_book *book, t_property *property);
-void				init_actions(t_property *property, t_book *book);
+int					handle_operations(t_book **book, t_property *property);
 int					validate_property(t_property *property);
 
 // utils

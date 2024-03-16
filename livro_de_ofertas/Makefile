@@ -14,9 +14,10 @@ OBJS_DIR 	= obj/
 
 FILES = \
 	main \
-	$(BOOK_DIR)init_book \
-	$(ACTIONS_DIR)init_actions $(ACTIONS_DIR)insert_property \
-	$(ACTIONS_DIR)validate_property \
+	$(BOOK_DIR)handle_book \
+	$(ACTIONS_DIR)handle_operations $(ACTIONS_DIR)insert_property \
+	$(ACTIONS_DIR)validate_property $(ACTIONS_DIR)modify_property \
+	$(ACTIONS_DIR)delete_property \
 	$(HANDLE_FREE_DIR)handle_free \
 	$(UTILS_DIR)print_book \
 

@@ -1,11 +1,23 @@
 
 #include "../../include/offer_book.h"
 
-void reduce_position(t_book *book)
+t_book *remove_node_book(t_book *node)
 {
-  t_book *node;
+  t_book *previous_node;
+  t_book *next_node;
 
-  node = book;
+  previous_node = node->previous;
+  next_node = node->next;
+  if (previous_node)
+    previous_node->next = next_node;
+  if (next_node)
+    next_node->previous = previous_node;
+  free(node);
+  return (next_node);
+}
+
+void reduce_position(t_book *node)
+{
   while (node != NULL)
   {
     node->position = node->position - 1;
@@ -13,24 +25,24 @@ void reduce_position(t_book *book)
   }
 }
 
-int position_exists(t_book *book, int position)
+t_book *get_node_position(t_book *book, int position)
 {
   t_book  *node;
-  int     found;
+  t_book  *found_node;
 
   node = book;
-  found = FALSE;
-  while (node != NULL && !found)
+  found_node = NULL;
+  while (node != NULL && !found_node)
   {
     if (node->position == position)
-      found = TRUE;
+      found_node = node;
     else
       node = node->next;
   }
-  return found;
+  return found_node;
 }
 
-t_book *new_node_book(t_book *book)
+t_book *add_node_book(t_book *book)
 {
   t_book *temp_node;
   t_book *new_node;
@@ -44,36 +56,24 @@ t_book *new_node_book(t_book *book)
     new_node->next = NULL;
     new_node->position = temp_node->position + 1;
     temp_node->next = new_node;
+    new_node->previous = temp_node;
     return new_node;
   }
   else
     return NULL;
 }
 
-int init_book(t_book *book)
+int init_book(t_book **book)
 {
   t_book *node;
-
   node = (t_book *) calloc(1, sizeof(t_book));
   if (node != NULL)
   {
     node->next = NULL;
+    node->previous = NULL;
     node->position = 1;
-    *book = *node;
+    *book = node;
     return TRUE;
-  }
-  else
-    return FALSE;
-}
-
-int new_book(t_book *book)
-{
-  if (book == NULL)
-  {
-    if (init_book(book))
-      return TRUE;
-    else
-      return FALSE;
   }
   else
     return FALSE;
