@@ -8,6 +8,7 @@ SRCS_DIR 	= src/
 UTILS_DIR		= utils/
 BOOK_DIR		= book/
 ACTIONS_DIR	= actions/
+NOTIFICATION_DIR = notifications/
 HANDLE_FREE_DIR = handle_free/
 
 OBJS_DIR 	= obj/
@@ -18,8 +19,9 @@ FILES = \
 	$(ACTIONS_DIR)handle_operations $(ACTIONS_DIR)insert_property \
 	$(ACTIONS_DIR)validate_property $(ACTIONS_DIR)modify_property \
 	$(ACTIONS_DIR)delete_property \
+	$(NOTIFICATION_DIR)handle_notifications \
 	$(HANDLE_FREE_DIR)handle_free \
-	$(UTILS_DIR)print_book \
+	$(UTILS_DIR)print_book  $(UTILS_DIR)ft_strlen \
 
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
@@ -37,6 +39,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)$(ACTIONS_DIR)
 	@mkdir -p $(OBJS_DIR)$(HANDLE_FREE_DIR)
 	@mkdir -p $(OBJS_DIR)$(UTILS_DIR)
+	@mkdir -p $(OBJS_DIR)$(NOTIFICATION_DIR)
 
 clean:
 	$(RM) -r $(OBJS_DIR) 

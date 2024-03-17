@@ -1,11 +1,3 @@
-/******************************************************************************
- * Nome do Arquivo: offer_book.h                                               *
- *                                                                             *
- * Autor: André Gomes                                                          *
- *                                                                             *
- * Data: 13/03/2024                                                            *
- ******************************************************************************/
-
 #ifndef OFFER_BOOK_H
 # define OFFER_BOOK_H
 
@@ -20,7 +12,7 @@
 
 enum				e_action
 {
-	INSERT = 0,
+	INSERT,
 	MODIFIER,
 	DELETE,
 };
@@ -44,21 +36,26 @@ typedef struct s_book
 
 // book
 void				reduce_position(t_book *node);
-t_book				*remove_node_book(t_book *node);
+t_book				*remove_node_book(t_book **book, t_book *node);
 t_book				*get_node_position(t_book *book, int position);
 t_book				*add_node_book(t_book *book);
 int					init_book(t_book **book);
 
 // actions
-t_book				*delete_property(t_book *node);
+t_book				*delete_property(t_book **book, t_book *node);
 t_book				*modify_property(t_book *node, t_property *property);
 t_book				*insert_property(t_book *book, t_property *property);
 int					handle_operations(t_book **book, t_property *property);
 int					validate_property(t_property *property);
 
 // utils
+size_t				ft_strlen(char *str);
 void				print_book(t_book *book);
 
+// notifications
+int					get_notifications(int *number_notification,
+						t_property *property, int *stop_program);
+int					get_number_notifications(int *number_notification, int *stop_program);
 // handle_free
 void				handle_free(t_book *book, t_property *property);
 

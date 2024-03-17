@@ -1,18 +1,24 @@
 
 #include "../../include/offer_book.h"
 
-t_book *remove_node_book(t_book *node)
+t_book *remove_node_book(t_book **book, t_book *node)
 {
   t_book *previous_node;
   t_book *next_node;
 
-  previous_node = node->previous;
-  next_node = node->next;
-  if (previous_node)
-    previous_node->next = next_node;
-  if (next_node)
-    next_node->previous = previous_node;
-  free(node);
+  next_node = NULL;
+  if (node)
+  {
+    previous_node = node->previous;
+    next_node = node->next;
+    if (previous_node)
+      previous_node->next = next_node;
+    if (next_node)
+      next_node->previous = previous_node;
+    if (*book == node)
+      *book = next_node;
+    free(node);
+  }
   return (next_node);
 }
 
@@ -71,7 +77,7 @@ int init_book(t_book **book)
   {
     node->next = NULL;
     node->previous = NULL;
-    node->position = 1;
+    node->position = 0;
     *book = node;
     return TRUE;
   }

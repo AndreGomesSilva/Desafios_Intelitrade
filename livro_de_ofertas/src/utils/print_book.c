@@ -4,13 +4,15 @@
 void print_book(t_book *book)
 {
   t_book *node;
+  printf("| POSICAO |  VALOR  | QUANTIDADE |\n");
+  printf("|---------|---------|------------|\n");
   if (book == NULL)
     return;
   node = book;
-  printf("posicao, ação, valor, quantidade\n");
   while (node != NULL)
   {
-    printf("%d,%lf,%d\n", node->position, node->value, node->quantity);
+    printf(" %d        |  %.2lf   |  %d      \n", node->position, node->value, node->quantity);
     node = node->next;
   }
+  printf("\n");
 }
