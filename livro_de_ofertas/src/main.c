@@ -1,4 +1,3 @@
-
 #include "../include/offer_book.h"
 
 int	main(void)

@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 size_t ft_strlen(char *str)

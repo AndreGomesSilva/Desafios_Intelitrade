@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 int validate_property(t_property *property)

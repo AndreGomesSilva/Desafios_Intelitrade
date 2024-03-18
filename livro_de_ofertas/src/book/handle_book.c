@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 t_book *remove_node_book(t_book **book, t_book *node)

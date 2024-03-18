@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 int	handle_operations(t_book **book, t_property *property)

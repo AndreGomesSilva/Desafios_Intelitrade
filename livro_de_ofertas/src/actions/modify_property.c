@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 t_book	*modify_property(t_book *node_book, t_property *property)

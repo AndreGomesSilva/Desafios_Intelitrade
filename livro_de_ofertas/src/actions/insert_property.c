@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 static int	set_propety(t_book *node, t_property *property)

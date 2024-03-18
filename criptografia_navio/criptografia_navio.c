@@ -92,7 +92,7 @@ char	*swap_half_byte(char *str)
 	return (str);
 }
 
-char	*decryptor(char **message)
+void	decryptor(char **message)
 {
 	int		i;
 	char	decimal;
@@ -107,7 +107,6 @@ char	*decryptor(char **message)
 		printf("%c", decimal);
 		i++;
 	}
-	return (NULL);
 }
 
 int	main(int argc, char *argv[])
@@ -118,13 +117,13 @@ int	main(int argc, char *argv[])
 			decryptor(&argv[1]);
 		else
 		{
-			fprintf(stderr, "Error: invalid message pass to decrypt\n");
+			fprintf(stderr, "Error: Mensagem inválida\n");
 			exit(1);
 		}
 	}
 	else
 	{
-		fprintf(stderr, "Error: too few arguments\n");
+		fprintf(stderr, "Error: Quantidade de argumentos insuficiente\n");
 		exit(1);
 	}
 	return (0);

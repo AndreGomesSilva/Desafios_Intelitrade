@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 static void free_book(t_book *book)

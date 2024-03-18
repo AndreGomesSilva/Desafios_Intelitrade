@@ -1,4 +1,3 @@
-
 #include "../../include/offer_book.h"
 
 t_book *delete_property(t_book **book, t_book *node)

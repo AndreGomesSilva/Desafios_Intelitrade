@@ -1,23 +1,24 @@
 #include "../../include/offer_book.h"
 
-int	get_notifications(int *number_notification, t_property *property, int *stop_program)
+int	get_notifications(int *number_notification, t_property *property,
+		int *stop_program)
 {
 	char	buffer[100];
 	int		number;
 
-	printf("posicao, ação, valor, quantidade\n");
+	printf("Posicao, Ação, Valor, Quantidade\n");
 	if (fgets(buffer, sizeof(buffer), stdin) == NULL)
-  {
-    fprintf(stderr, "Error: Falha ao ler a entrada\n");
-    return (FALSE);
-  }
+	{
+		fprintf(stderr, "Error: Falha ao ler a entrada\n");
+		return (FALSE);
+	}
 	number = sscanf(buffer, "%d, %d, %lf, %d ", &property->position,
 			&property->action, &property->value, &property->quantity);
 	if (number == 4 && validate_property(property))
 		return (TRUE);
 	else
 	{
-		printf("Formato de entrada inválido,\nexemplo de formato valido: 1,0,100.00,10\ngostaria de tentar novamente? (você continuará do ultimo lancamento)\ndigite S para sim ou N para não\n");
+		printf("Formato de entrada inválido,\nexemplo de formato valido: 1,0,100.00,10\ngostaria de tentar novamente? (você continuará do ultimo lançamento)\ndigite S para sim ou N para não\n");
 		while (TRUE)
 		{
 			fgets(buffer, sizeof(buffer), stdin);
@@ -30,7 +31,7 @@ int	get_notifications(int *number_notification, t_property *property, int *stop_
 			else if ((buffer[0] == 'N' || buffer[0] == 'n' || buffer[0] == 'q'
 					|| buffer[0] == 'Q') && buffer[1] == '\n')
 			{
-        *stop_program = TRUE;
+				*stop_program = TRUE;
 				return (FALSE);
 			}
 		}
@@ -43,7 +44,7 @@ int	get_number_notifications(int *number_notification, int *stop_program)
 	char	buffer[100];
 	int		result;
 
-	printf("Caso queira encerrar o programa, digite 'q'\n");
+	printf("Para encerra o programa, digite 'q'\n");
 	printf("Quantas operações deseja executar?\n");
 	if (fgets(buffer, sizeof(buffer), stdin) == NULL)
 	{

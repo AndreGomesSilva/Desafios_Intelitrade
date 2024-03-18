@@ -51,13 +51,13 @@ int main(void)
         result = get_minor_distance(arr1, size_arr1, arr2, size_arr2);
 
         if (result == 0)
-            fprintf(stdout, "the minor distance is 0");
+            printf("Os dois arrays possuem elementos de mesmo valor\n");
         else
-            fprintf(stdout, "the minor distance between two elements in this two arrays of int is: %d \n", result);
+            printf("A menor distance entre os dois arrays de inteiros é: %d\n", result);
     }
     else
     {
-        fprintf(stderr, "detect problems with input");
+        fprintf(stderr, "Error: Quantidade de elementos insuficiente\n");
         exit(1);
     }
     return (0);
